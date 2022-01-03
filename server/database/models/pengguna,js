@@ -1,0 +1,35 @@
+const { DataTypes } = require("sequelize");
+const conn = require("../connect");
+
+const PenggunaModel = conn.define(
+  "penggunas",
+  {
+    id: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+    },
+    loanCode: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+    },
+    lastname: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  },
+  {
+    tableName: "penggunas",
+    timestamps: true,
+  }
+);
+
+module.exports = PenggunaModel;
