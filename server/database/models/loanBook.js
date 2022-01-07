@@ -5,13 +5,13 @@ const UserModel = require("./user");
 const LoanBookModel = conn.define(
   "loanBooks",
   {
-    penggunaId: {
-      type: DataTypes.UUID,
-      allowNull: false,
-    },
     loanCode: {
       type: Datatypes.STRING(50),
       primaryKey: true,
+    },
+    penggunaId: {
+      type: DataTypes.UUID,
+      allowNull: false,
     },
     status: {
       type: Datatypes.BOOLEAN,
