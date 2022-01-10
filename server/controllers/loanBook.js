@@ -39,3 +39,56 @@ exports.insert = async (req, res) => {
     });
   }
 };
+
+
+exports.find = async (req, res) => {
+  try{
+    const { q, page, limit } = req.query;
+    const paramExists = Object.keys(req.query).length > 0;
+    let loans;
+    let detailloans;
+
+    if (!paramExists) {
+       loans = await LoanBookModel.findAll({
+        where: {
+          loanCode: req.body.loanCode,
+        },
+        logging: false,
+      });
+
+
+      detailloans = await DetailLoanBookModel.findAll({
+        where: {
+          loanCode: req.body.loanCode,
+        },
+        logging: false,
+      });
+    }
+
+    if (paramExists) {
+      if (q.length === 0) {
+         loans = await LoanBookModel.findAll({
+          where: {
+            loanCode: req.body.loanCode,
+          },
+          logging: false,
+        });
+
+
+        detailloans = await DetailLoanBookModel.findAll({
+          where: {
+            loanCode: req.body.loanCode,
+          },
+          logging: false,
+        });
+      } else {
+          loans = await LoanBookModel.findAll({
+          where: {
+            loanCode: req.body.loanCode,
+          },
+          logging: false,
+        });
+      }
+    }
+  }
+}
