@@ -13,6 +13,10 @@ const LoanBookModel = conn.define(
       type: DataTypes.UUID,
       allowNull: false,
     },
+    description: {
+      type: Datatypes.STRING(150),
+      allowNull: true,
+    },
     status: {
       type: Datatypes.BOOLEAN,
       allowNull: false,
